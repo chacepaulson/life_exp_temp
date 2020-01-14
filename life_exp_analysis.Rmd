@@ -2,8 +2,26 @@
 title: "Examine Life Expectancy"
 author: "Chace Paulson"
 date: "1/13/2020"
-output: html_document:
-  df_print: paged
-urlcolor: blue
+output: html_document
 ---
+
+## Life Expectancy 
+
+A sentence about life expectancy. 
+
+```{r}
+library(gapminder)
+library(tidyverse)
+data(gapminder_unfiltered)
+
+
+gapminder_unfiltered %>% 
+  group_by(year) %>% 
+  filter(lifeExp == max(lifeExp)) %>% 
+  ungroup() %>% 
+  select(year, country, lifeExp) %>% 
+  arrange(year) -> sumdat
+
+sumdat
+```
 
